@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Colorida con Tabla</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #fff;
+        }
+
+        .calculator {
+            background-color: #2e3b4e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            width: 350px;
+            text-align: center;
+        }
+
+        #display {
+            width: 100%;
+            padding: 20px;
+            font-size: 30px;
+            text-align: right;
+            border: none;
+            border-radius: 10px;
+            background-color: #222;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        button {
+            width: 70px;
+            height: 70px;
+            font-size: 24px;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+            transform: scale(1.1);
+        }
+
+        button:active {
+            background-color: #387c44;
+            transform: scale(1);
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+            width: 100%;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        .color-1 { background-color: #FF6347; }
+        .color-2 { background-color: #FF9900; }
+        .color-3 { background-color: #FFDD44; }
+        .color-4 { background-color: #3E9D92; }
+        .color-5 { background-color: #70A1FF; }
+        .color-6 { background-color: #E91E63; }
+
+        .color-1:hover { background-color: #FF503F; }
+        .color-2:hover { background-color: #FF8C00; }
+        .color-3:hover { background-color: #FFD700; }
+        .color-4:hover { background-color: #36A89A; }
+        .color-5:hover { background-color: #5F87FF; }
+        .color-6:hover { background-color: #D81B60; }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1 style="color: #fff; margin-bottom: 20px;">Calculadora</h1>
+        <input id="display" type="text" readonly>
+        
+        <table>
+            <tr>
+                <td><button class="color-1" onclick="appendToDisplay('1')">1</button></td>
+                <td><button class="color-2" onclick="appendToDisplay('2')">2</button></td>
+                <td><button class="color-3" onclick="appendToDisplay('3')">3</button></td>
+                <td><button class="color-4" onclick="appendToDisplay('+')">+</button></td>
+            </tr>
+            <tr>
+                <td><button class="color-1" onclick="appendToDisplay('4')">4</button></td>
+                <td><button class="color-2" onclick="appendToDisplay('5')">5</button></td>
+                <td><button class="color-3" onclick="appendToDisplay('6')">6</button></td>
+                <td><button class="color-4" onclick="appendToDisplay('-')">-</button></td>
+            </tr>
+            <tr>
+                <td><button class="color-1" onclick="appendToDisplay('7')">7</button></td>
+                <td><button class="color-2" onclick="appendToDisplay('8')">8</button></td>
+                <td><button class="color-3" onclick="appendToDisplay('9')">9</button></td>
+                <td><button class="color-4" onclick="appendToDisplay('*')">*</button></td>
+            </tr>
+            <tr>
+                <td><button class="color-1" onclick="appendToDisplay('0')">0</button></td>
+                <td><button class="color-2" onclick="clearDisplay()">C</button></td>
+                <td><button class="color-3" onclick="calculateResult()">=</button></td>
+                <td><button class="color-4" onclick="appendToDisplay('/')">/</button></td>
+            </tr>
+        </table>
+    </div>
+    
+    <div class="footer">
+        <p>Erick Armando Martinez Meza-Aaron Caleb Silva Ozuna-Mtra.Alondra Zavala D.</p>
+    </div>
+
+    <script>
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function calculateResult() {
+            let display = document.getElementById('display');
+            try {
+                display.value = eval(display.value);
+            } catch (error) {
+                display.value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
